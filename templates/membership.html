@@ -10,9 +10,7 @@
 
     <title>회원가입 페이지</title>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
 
-    <script src="common.js"></script>
 
     <style>
         div {
@@ -26,19 +24,29 @@
         }
 
         function create_id() {
-            var id = document.querySelector('#id');
-            var pw = document.querySelector('#pw');
-            var r_pw = document.querySelector('#r_pw');
+            let id = $('#id').val()
+            let pw = $('#pw').val()
+            let rpw = $('#rpw').val()
 
             if (id.value == "" || pw.value == "") {
-                alert("아이디와 비밀번호는 공백일 수 없습니다")
-            } else {
-                if (pw.value !== r_pw.value) {
-                    alert("비밀번호를 재확인 해주세요.")
-                } else {
-                    location.href = 'login.html'
+                        alert("아이디와 비밀번호는 공백일 수 없습니다")
+                    } else {
+                        if (pw.value !== rpw.value) {
+                            alert("비밀번호를 재확인 해주세요.")
+                        } else {
+                            location.href = 'login.html'
+                        }
+                    }
+
+            $.ajax({
+                type: 'POST',
+                url: '/memberships',
+                data: {id_give: id, pw_give: pw, rpw_give: rpw},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
                 }
-            }
+            })
         }
 
         function windowclose() {
@@ -61,7 +69,7 @@
         <label>비밀번호: <input id="pw" type="text"></label>
     </div>
     <div>
-        <label>비밀번호 확인: <input id="r_pw" type="text"></label>
+        <label>비밀번호 확인: <input id="rpw" type="text"></label>
     </div>
     <div>
         <input type="button" value="뒤로 가기" onclick="back();">
