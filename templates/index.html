@@ -102,7 +102,7 @@
                     let rows = response['lectures']
                     for(let i = 0; i < rows.length; i++) {
                         let image = rows[i]['image']
-                        let title = rows[i]['title']
+                        // let title = rows[i]['title']
                         let desc = rows[i]['desc']
                         let star = rows[i]['star']
                         let comment = rows[i]['comment']
@@ -114,7 +114,7 @@
                                                 <img src="${image}"
                                                      class="card-img-top">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">${title}</h5>
+<!--                                                    <h5 class="card-title">${title}</h5>-->
                                                     <p class="card-text">${desc}</p>
                                                     <p>${star_image}</p>
                                                     <p class="mycomment">${comment}</p>

@@ -35,16 +35,18 @@ def lecture_post():
     soup = BeautifulSoup(data.text, 'html.parser')
 
     og_image = soup.select_one('meta[property="og:image"]')
-    og_title = soup.select_one('meta[property="course_title"]')
+    # og_title = soup.select_one('meta[property="course_title"]')
+    # print(f"og_title = {og_title}")
     og_description = soup.select_one('meta[property="og:description"]')
 
     image = og_image['content']
-    title = og_title['content']
+    # title = og_title['content']
     description = og_description['content']
+    # print(f"image = {image}\n title = {title}\n description = {description}")
 
     doc = {
         'image': image,
-        'title': title,
+        # 'title': title,
         'desc': description,
         'star': star_receive,
         'comment': comment_receive
