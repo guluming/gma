@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>회원가입 페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+    <script src="common.js"></script>
+
+    <style>
+        div {
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        function back() {
+            history.back();
+        }
+
+        function create_id() {
+            var id = document.querySelector('#id');
+            var pw = document.querySelector('#pw');
+            var r_pw = document.querySelector('#r_pw');
+
+            if (id.value == "" || pw.value == "") {
+                alert("아이디와 비밀번호는 공백일 수 없습니다")
+            } else {
+                if (pw.value !== r_pw.value) {
+                    alert("비밀번호를 재확인 해주세요.")
+                } else {
+                    location.href = 'login.html'
+                }
+            }
+        }
+
+        function windowclose() {
+            window.close();
+        }
+    </script>
+
+</head>
+<body>
+<div class="wrap">
+    <div class="mytitle">
+        <h1>회원가입 페이지</h1>
+        <h5>'아이디', '비밀번호', '비밀번호 확인'을 입력해주세요</h5>
+    </div>
+
+    <div>
+        <label>아이디: <input id="id" type="text"></label>
+    </div>
+    <div>
+        <label>비밀번호: <input id="pw" type="text"></label>
+    </div>
+    <div>
+        <label>비밀번호 확인: <input id="r_pw" type="text"></label>
+    </div>
+    <div>
+        <input type="button" value="뒤로 가기" onclick="back();">
+        <input type="button" value="계성 생성" onclick="create_id();">
+        <input type="button" value="닫기" onclick="windowclose();">
+    </div>
+</div>
+</body>
+</html>
