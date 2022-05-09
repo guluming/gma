@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>로그인 페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+    <style>
+        div {
+            padding: 10px;
+        }
+    </style>
+
+    <script src="common.js"></script>
+
+    <script>
+        function login() {
+            var id = document.querySelector('#id');
+            var pw = document.querySelector('#pw');
+
+            if (id.value == "" || pw.value == "") {
+                alert("아이디와 비밀번호를 확인해 주십시오.")
+            } else {
+                location.href = 'classmain.html';
+            }
+        }
+
+        function windowclose() {
+            window.close();
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="mytitle">
+        <h1>로그인 페이지</h1>
+        <h5>아이디, 비밀번호를 입력해주세요</h5>
+    </div>
+    <div>
+        <label>아이디: <input id="id" type="text"></label>
+    </div>
+    <div>
+        <label>비밀번호: <input id="pw" type="text"></label>
+    </div>
+    <div>
+        <input type="button" value="로그인" onclick="login();">
+        <a href="join.html"><input type="button" value="회원 가입하기"></a>
+        <input type="button" value="닫기" onclick="windowclose();">
+    </div>
+</div>
+</body>
+</html>
