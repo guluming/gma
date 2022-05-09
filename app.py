@@ -6,20 +6,20 @@ client = MongoClient('mongodb+srv://test:sparta@cluster0.ksf61.mongodb.net/Clust
 db = client.dbsparta
 
 @app.route('/')
-def join():
+def main():
     return render_template('membership.html')
 
-@app.route("/stockuser", methods=["POST"])
-def stockuser_post():
+@app.route("/memberships", methods=["POST"])
+def membership_post():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    r_pw = request.form['r_pw_give']
+    rpw_receive = request.form['rpw_give']
     doc = {
-        'id': name_receive,
-        'pw': comment_receive,
-        'r_pw': comment_receive
+        'id': id_receive,
+        'pw': pw_receive,
+        'rpw': rpw_receive
     }
-    db.stockuser.insert_one(doc)
+    db.membership.insert_one(doc)
 
     return jsonify({'msg':'회원가입 완료'})
 
