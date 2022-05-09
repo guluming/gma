@@ -6,25 +6,27 @@ client = MongoClient('mongodb+srv://test:sparta@cluster0.ksf61.mongodb.net/Clust
 db = client.dbsparta
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def join():
+    return render_template('membership.html')
 
-@app.route("/homework", methods=["POST"])
-def homework_post():
-    name_receive = request.form['name_give']
-    comment_receive = request.form['comment_give']
+@app.route("/stockuser", methods=["POST"])
+def stockuser_post():
+    id_receive = request.form['id_give']
+    pw_receive = request.form['pw_give']
+    r_pw = request.form['r_pw_give']
     doc = {
-        'name': name_receive,
-        'comment': comment_receive,
+        'id': name_receive,
+        'pw': comment_receive,
+        'r_pw': comment_receive
     }
-    db.homework.insert_one(doc)
+    db.stockuser.insert_one(doc)
 
-    return jsonify({'msg':'응원 남기기 성공!!'})
+    return jsonify({'msg':'회원가입 완료'})
 
-@app.route("/homework", methods=["GET"])
-def homework_get():
-    comment_list = list(db.homework.find({}, {'_id': False}))
-    return jsonify({'comments':comment_list})
+# @app.route("/stock", methods=["GET"])
+#def homework_get():
+#    comment_list = list(db.homework.find({}, {'_id': False}))
+#    return jsonify({'comments':comment_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
