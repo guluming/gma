@@ -26,5 +26,11 @@ def homework_get():
     comment_list = list(db.homework.find({}, {'_id': False}))
     return jsonify({'comments':comment_list})
 
+# 메인 페이지 - 이병수
+@app.route("/api/posts", methods=["GET"])
+def posts_get():
+    posts_list = list(db.posts.find({}, {'_id': False}))
+    return jsonify({'posts':posts_list})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
