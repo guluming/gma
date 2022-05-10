@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>강모아 : 강의 모아 보기</title>
     <style>
+        .mainBox{position:relative; width:100%; height:500px; text-align:center;}
+        .mainBox::after{content:""; position:absolute; top:0; left:0; z-index:-1; opacity:.5; width:100%; height:500px; background: url('../images/main.jpg') center / cover;}
+        .mainBox h3{padding-top:200px; font-size:40px; font-weight:700;}
+        .mainBox p{font-weight:700;}
         .titImg{width:100%; max-width:600px;}
         .blind{display:none;}
     </style>
@@ -17,9 +21,9 @@
     <div id="wrap">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-                <span class="navbar-toggler-icon"></span>
+                 <!--<a class="navbar-brand" href="#">Navbar</a>-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -38,12 +42,10 @@
             </div>
         </nav>
 
-        <di class="mainBox">
-            <img src="../images/main.jpg" class="img-fluid" alt="1">
-            <h3 class="blind">강모아</h3>
-            <p class="blind">강의를 편하게!<br />모아 보자</p>
-            <button type="button" class="btn btn-dark">Dark</button>
-        </di>
+        <div class="mainBox">
+            <h3>강모아</h3>
+            <p>강의를 편하게!<br />모아 보자</p>
+        </div>
 
         <div class="card text-center">
             <div class="card-header">
