@@ -18,7 +18,8 @@ from bs4 import BeautifulSoup
 @app.route('/')
 def main():
     myname = "강모아 테스트"
-    return render_template("index.html", name=myname)
+    h_title = "강모아"
+    return render_template("index.html", name=myname, title=h_title)
 
 
 @app.route("/lecture", methods=["POST"])
