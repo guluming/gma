@@ -37,16 +37,16 @@ def lecture_post():
 
     og_image = soup.select_one('meta[property="og:image"]')
     og_title = soup.select_one('meta[property="og:title"]')
-    og_description = soup.select_one('meta[property="og:description"]')
+    # og_description = soup.select_one('meta[property="og:description"]')
 
     image = og_image['content']
     title = og_title['content']
-    description = og_description['content']
+    # description = og_description['content']
 
     doc = {
         'image': image,
         'title': title,
-        'desc': description,
+        # 'desc': description,
         'star': star_receive,
         'comment': comment_receive
     }
