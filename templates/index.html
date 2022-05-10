@@ -91,8 +91,17 @@
             margin-right: 10px;
         }
 
+        .card-img-top {
+            min-height: 132px; {# 강제로 인프런 이미지 높이에 맞춰둔 상태 #}
+            {#object-fit: cover; {# fill / contain / cover / none / scail-down #}
+            height: 95%; {# 전체화면일때도 이미지 크기를 맞추기 위함 #}
+        }
+
         .card-title {
-            height: 150px;
+            height: 145px; {# 고정영역 설정 #}
+
+            overflow: hidden; {# hidden : 영역을 넘으면 보이지 않도록 설정 / scroll : 스크롤#}
+            text-overflow: clip; {# clip : 크기에 맞게 자름 / ellipsis : ...을 넣어서 자름 #}
         }
     </style>
     <script>
