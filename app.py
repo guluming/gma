@@ -11,9 +11,14 @@ import requests
 from bs4 import BeautifulSoup
 
 
+# @app.route('/')
+# def home():
+#     return render_template('index.html')
+
 @app.route('/')
-def home():
-    return render_template('index.html')
+def main():
+    myname = "강모아 테스트"
+    return render_template("index.html", name=myname)
 
 
 @app.route("/lecture", methods=["POST"])
