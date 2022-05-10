@@ -96,10 +96,10 @@
             $('#cards-box').empty()
             $.ajax({
                 type: 'GET',
-                url: '/movie',
+                url: '/lecture',
                 data: {},
                 success: function (response) {
-                    let rows = response['movies']
+                    let rows = response['lectures']
                     for(let i = 0; i < rows.length; i++) {
                         let image = rows[i]['image']
                         let title = rows[i]['title']
@@ -135,7 +135,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/movie',
+                url: '/lecture',
                 data: {url_give: url, star_give: star, comment_give: comment},
                 success: function (response) {
                     alert(response['msg'])

@@ -16,8 +16,8 @@ def home():
     return render_template('index.html')
 
 
-@app.route("/movie", methods=["POST"])
-def movie_post():
+@app.route("/lecture", methods=["POST"])
+def lecture_post():
     url_receive = request.form['url_give']
     star_receive = request.form['star_give']
     comment_receive = request.form['comment_give']
@@ -44,15 +44,15 @@ def movie_post():
         'comment': comment_receive
     }
 
-    db.movies.insert_one(doc)
+    db.lectures.insert_one(doc)
 
     return jsonify({'msg': 'POST 연결 완료!'})
 
 
-@app.route("/movie", methods=["GET"])
-def movie_get():
-    movies_list = list(db.movies.find({}, {'_id': False}))
-    return jsonify({'movies': movies_list})
+@app.route("/lecture", methods=["GET"])
+def lecture_get():
+    lectures_list = list(db.lectures.find({}, {'_id': False}))
+    return jsonify({'lectures': lectures_list})
 
 
 if __name__ == '__main__':
