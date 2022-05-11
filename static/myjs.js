@@ -38,7 +38,7 @@ function toggle_like(post_id, type) {
 
 function post() {
     let comment = $("#textarea-post").val()
-    // let url = $("#url-post").val()
+    let url = $("#textarea-post").val()
     let today = new Date().toISOString()
 
     // let url = $('#url').val()
@@ -49,6 +49,7 @@ function post() {
         url: "/posting",
         data: {
             comment_give: comment,
+            url_give: url,
             date_give: today
             // url_give: url,
             // star_give: star
@@ -167,6 +168,7 @@ function get_posts(username) {
                                                         <br>
                                                         ${post['comment']}
                                                         <br>
+                                                        ${post['url']}
                                                                                                                                                               
                                                         
                                                     </p>

@@ -138,7 +138,7 @@ def posting():
         user_info = db.users.find_one({"username": payload["id"]})
         comment_receive = request.form["comment_give"]
         date_receive = request.form["date_give"]
-        # url_receive = request.form['url_give']
+        url_receive = request.form['url_give']
         # star_receive = request.form['star_give']
 
         # headers = {
@@ -158,8 +158,8 @@ def posting():
             "profile_name": user_info["profile_name"],
             "profile_pic_real": user_info["profile_pic_real"],
             "comment": comment_receive,
-            "date": date_receive
-            # "url": url_receive,
+            "date": date_receive,
+            "url": url_receive
             # 'star': star_receive,
             # 'title': title,
             # 'image': image
