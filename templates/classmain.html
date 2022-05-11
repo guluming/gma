@@ -69,11 +69,7 @@
                                 <div class="control has-icons-left">
                                     <input id="input-url" class="input" type="text" placeholder="url을 작성해주세요.">
                                 </div>
-                            </div>
-                            <div class="field">
-                                <div class="control has-icons-left">
-                                    <input id="input-title" class="input" type="text" placeholder="강의명을 작성해주세요.">
-                                </div>
+
                             </div>
                             <p class="control">
                                         <textarea id="textarea-post" class="textarea"
@@ -84,16 +80,17 @@
                         <nav class="level is-mobile">
                             <div class="level-left">
                                 <div class="input-group mb-3">
-{#                                <label class="input-group-text" for="inputGroupSelect01">별점</label>#}
-                                <select class="form-select" input id="input-star" >
-                                    <option selected>-- 별점 --</option>
-                                    <option value="1">⭐</option>
-                                    <option value="2">⭐⭐</option>
-                                    <option value="3">⭐⭐⭐</option>
-                                    <option value="4">⭐⭐⭐⭐</option>
-                                    <option value="5">⭐⭐⭐⭐⭐</option>
-                                </select>
-                            </div>
+                                    {#                                <label class="input-group-text" for="inputGroupSelect01">별점</label>#}
+                                    <select class="form-select" input id="input-star">
+                                        <option selected>-- 별점 --</option>
+                                        <option value="1">⭐</option>
+                                        <option value="2">⭐⭐</option>
+                                        <option value="3">⭐⭐⭐</option>
+                                        <option value="4">⭐⭐⭐⭐</option>
+                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                </div>
+                                {# 별점 #}
 
                             </div>
                             <div class="level-right">
@@ -105,6 +102,7 @@
                                        onclick='$("#modal-post").removeClass("is-active")'>취소</a>
                                 </div>
                             </div>
+                            {# 포스팅 버튼 #}
                         </nav>
                     </div>
                 </article>

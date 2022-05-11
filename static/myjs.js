@@ -38,12 +38,10 @@ function toggle_like(post_id, type) {
 
 function post() {
     let url = $("#input-url").val()
-    let title = $("#input-title").val()
+    let title = $("#title").val()
     let comment = $("#textarea-post").val()
     let today = new Date().toISOString()
     let star = $('#input-star').val()
-
-    // let url = $('#url').val()
 
     $.ajax({
         type: "POST",
@@ -61,45 +59,6 @@ function post() {
         }
     })
 }
-
-// $(document).ready(function(){
-//           listing();
-//         });
-//
-//         function listing() {
-//             $('#cards-box').empty()
-//             $.ajax({
-//                 type: 'GET',
-//                 url: '/lecture',
-//                 data: {},
-//                 success: function (response) {
-//                     let rows = response['lectures']
-//                     for(let i = 0; i < rows.length; i++) {
-//                         let image = rows[i]['image']
-//                         let title = rows[i]['title']
-//                         let star = rows[i]['star']
-//                         let comment = rows[i]['comment']
-//
-//                         let star_image = '⭐'.repeat(star)
-//
-//                         let temp_html = `<div class="col">
-//                                             <div class="card h-100">
-//
-//                                                 <img src="${image}"
-//                                                      class="card-img-top">
-//                                                 <div class="card-body">
-//                                                     <h5 class="card-title">${title}</h5>
-//                                                     <p>${star_image}</p>
-//                                                     <p class="mycomment">${comment}</p>
-//                                                 </div>
-//                                             </div>
-//                                         </div>`
-//
-//                         $('#cards-box').append(temp_html)
-//                     }
-//                 }
-//             })
-//         }
 
 function time2str(date) {
     let today = new Date()
@@ -133,8 +92,8 @@ function num2str(count) {
 }
 
 function get_posts(username) {
-    if (username==undefined) {
-        username=""
+    if (username == undefined) {
+        username = ""
     }
     $("#post-box").empty()
     $.ajax({
@@ -154,6 +113,9 @@ function get_posts(username) {
                     let star = posts[i]['star']
                     let star_image = '⭐'.repeat(star)
 
+                    let image = posts[i]['image']
+                    let title = posts[i]['title']
+
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
                                             <div class="media-left">
@@ -167,9 +129,10 @@ function get_posts(username) {
                                                     <p>
                                                         <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
                                                         <br>
-                                                        ${post['url']}
+                                                        <img src="${image}"
+                                                            class="card-img-top">
                                                         <br>
-                                                        ${post['title']}
+                                                        ${title}
                                                         <br>
                                                         ${post['comment']}
                                                         <br>                                                        
