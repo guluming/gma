@@ -37,11 +37,11 @@ function toggle_like(post_id, type) {
 }
 
 function post() {
-    let url = $("#input-url").val()
+    let url = $("#url").val()
     let title = $("#title").val()
     let comment = $("#textarea-post").val()
     let today = new Date().toISOString()
-    let star = $('#input-star').val()
+    let star = $('#star').val()
 
     $.ajax({
         type: "POST",
@@ -127,10 +127,10 @@ function get_posts(username) {
                                             <div class="media-content">
                                                 <div class="content">
                                                     <p>
-                                                        <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
-                                                        <br>
-                                                        <img src="${image}"
-                                                            class="card-img-top">                                                        
+                                                        <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>                                                        
+                                                        <a href="#url"><img src="${image}" 
+                                                            class="card-img-top" id="image"></a>
+<!--                                                            url에 아이디 값을 줘야되는데                                                        -->
                                                         <p class="mytitle">${title}</p>                                                                                                          
                                                         <p>${star_image}</p>
                                                         <p class="mycomment">${post['comment']}</p>                                                                                                                                                                                                                                                                         
@@ -145,7 +145,6 @@ function get_posts(username) {
                                                             </span>&nbsp;<span class="like-num">${num2str(count_heart)}</span>
                                                         </a>
                                                     </div>
-
                                                 </nav>
                                             </div>
                                         </article>

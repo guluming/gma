@@ -139,8 +139,8 @@ def posting():
         comment_receive = request.form["comment_give"]
         date_receive = request.form["date_give"]
         url_receive = request.form['url_give']
-        # title_receive = request.form['title_give']
         star_receive = request.form['star_give']
+
 
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
@@ -160,10 +160,8 @@ def posting():
             "profile_pic_real": user_info["profile_pic_real"],
             "comment": comment_receive,
             "date": date_receive,
-            # "url": url_receive,
             "title": title,
             'star': star_receive,
-
             'image': image
 
         }
