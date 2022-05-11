@@ -40,10 +40,9 @@ function post() {
     let comment = $("#textarea-post").val()
     let url = $("#url-post").val()
     let today = new Date().toISOString()
-    // console.log(comment, url, today)
 
     // let url = $('#url').val()
-    // let star = $('#star').val()
+    let star = $('#star').val()
 
     $.ajax({
         type: "POST",
@@ -51,8 +50,8 @@ function post() {
         data: {
             comment_give: comment,
             date_give: today,
-            url_give: url
-            // star_give: star
+            url_give: url,
+            star_give: star
         },
         success: function (response) {
             $("#modal-post").removeClass("is-active")
@@ -149,6 +148,10 @@ function get_posts(username) {
                     let time_before = time2str(time_post)
                     let class_heart = post['heart_by_me'] ? "fa-heart" : "fa-heart-o"
                     let count_heart = post['count_heart']
+
+                    let star = posts[i]['star']
+                    let star_image = '⭐'.repeat(star)
+
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
                                             <div class="media-left">
@@ -163,6 +166,9 @@ function get_posts(username) {
                                                         <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
                                                         <br>
                                                         ${post['comment']}
+                                                        <br>
+                                                        1                                                                                                      
+                                                        
                                                     </p>
                                                 </div>
                                                 <nav class="level is-mobile">
