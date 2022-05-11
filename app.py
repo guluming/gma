@@ -139,6 +139,8 @@ def posting():
         comment_receive = request.form["comment_give"]
         date_receive = request.form["date_give"]
         url_receive = request.form['url_give']
+        title_receive = request.form['title_give']
+
         # star_receive = request.form['star_give']
 
         # headers = {
@@ -159,9 +161,10 @@ def posting():
             "profile_pic_real": user_info["profile_pic_real"],
             "comment": comment_receive,
             "date": date_receive,
-            "url": url_receive
+            "url": url_receive,
+            "title": title_receive
+
             # 'star': star_receive,
-            # 'title': title,
             # 'image': image
         }
         db.posts.insert_one(doc)
