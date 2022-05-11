@@ -142,13 +142,17 @@ def posting():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"username": payload["id"]})
+        url_receive = request.form["url_give"]
         comment_receive = request.form["comment_give"]
+        star_receive = request.form["star_give"]
         date_receive = request.form["date_give"]
         doc = {
             "username": user_info["username"],
             "nickname": user_info["nickname"],
             "profile_pic_real": user_info["profile_pic_real"],
+            "url": url_receive,
             "comment": comment_receive,
+            "star": star_receive,
             "date": date_receive
         }
         db.posts.insert_one(doc)
