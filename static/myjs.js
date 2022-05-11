@@ -130,14 +130,11 @@ function get_posts(username) {
                                                         <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
                                                         <br>
                                                         <img src="${image}"
-                                                            class="card-img-top">
-                                                        <br>
-                                                        ${title}
-                                                        <br>
-                                                        ${post['comment']}
-                                                        <br>                                                        
-                                                        ${star_image}                                                                                                                                                                                                                      
-                                                        
+                                                            class="card-img-top">                                                        
+                                                        <p class="mytitle">${title}</p>                                                                                                          
+                                                        <p>${star_image}</p>
+                                                        <p class="mycomment">${post['comment']}</p>                                                                                                                                                                                                                                                                         
+                                                      
                                                     </p>
                                                 </div>
                                                 <nav class="level is-mobile">

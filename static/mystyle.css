@@ -49,3 +49,11 @@ input::-webkit-calendar-picker-indicator {
 .form-select {
     height: 100%;
 }
+
+.mycomment {
+    color: gray;
+}
+
+.mytitle {
+    font-weight: bold;
+}
