@@ -41,9 +41,9 @@ function post() {
     let title = $("#input-title").val()
     let comment = $("#textarea-post").val()
     let today = new Date().toISOString()
+    let star = $('#input-star').val()
 
     // let url = $('#url').val()
-    // let star = $('#star').val()
 
     $.ajax({
         type: "POST",
@@ -52,9 +52,8 @@ function post() {
             comment_give: comment,
             url_give: url,
             title_give: title,
-            date_give: today
-
-            // star_give: star
+            date_give: today,
+            star_give: star
         },
         success: function (response) {
             $("#modal-post").removeClass("is-active")
@@ -152,8 +151,8 @@ function get_posts(username) {
                     let class_heart = post['heart_by_me'] ? "fa-heart" : "fa-heart-o"
                     let count_heart = post['count_heart']
 
-                    // let star = posts[i]['star']
-                    // let star_image = '⭐'.repeat(star)
+                    let star = posts[i]['star']
+                    let star_image = '⭐'.repeat(star)
 
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
@@ -172,7 +171,9 @@ function get_posts(username) {
                                                         <br>
                                                         ${post['title']}
                                                         <br>
-                                                        ${post['comment']}                                                                                                                                                                                                                      
+                                                        ${post['comment']}
+                                                        <br>                                                        
+                                                        ${star_image}                                                                                                                                                                                                                      
                                                         
                                                     </p>
                                                 </div>
