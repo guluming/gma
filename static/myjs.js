@@ -42,13 +42,17 @@ function toggle_like(post_id, type) {
 }
 
 function post() {
+    let url = $('#url').val()
     let comment = $("#textarea-post").val()
+    let star = $('#star').val()
     let today = new Date().toISOString()
     $.ajax({
         type: "POST",
         url: "/posting",
         data: {
+            url_give:url,
             comment_give: comment,
+            star_give:star,
             date_give: today
         },
         success: function (response) {
