@@ -138,31 +138,31 @@ def posting():
         user_info = db.users.find_one({"username": payload["id"]})
         comment_receive = request.form["comment_give"]
         date_receive = request.form["date_give"]
-        url_receive = request.form['url_give']
-        star_receive = request.form['star_give']
+        # url_receive = request.form['url_give']
+        # star_receive = request.form['star_give']
 
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-        data = requests.get(url_receive, headers=headers)
-
-        soup = BeautifulSoup(data.text, 'html.parser')
-
-        og_image = soup.select_one('meta[property="og:image"]')
-        og_title = soup.select_one('meta[property="og:title"]')
-
-        image = og_image['content']
-        title = og_title['content']
+        # headers = {
+        #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+        # data = requests.get(url_receive, headers=headers)
+        #
+        # soup = BeautifulSoup(data.text, 'html.parser')
+        #
+        # og_image = soup.select_one('meta[property="og:image"]')
+        # og_title = soup.select_one('meta[property="og:title"]')
+        #
+        # image = og_image['content']
+        # title = og_title['content']
 
         doc = {
             "username": user_info["username"],
             "profile_name": user_info["profile_name"],
             "profile_pic_real": user_info["profile_pic_real"],
             "comment": comment_receive,
-            "date": date_receive,
-            "url": url_receive,
-            'star': star_receive,
-            'title': title,
-            'image': image
+            "date": date_receive
+            # "url": url_receive,
+            # 'star': star_receive,
+            # 'title': title,
+            # 'image': image
         }
         db.posts.insert_one(doc)
 

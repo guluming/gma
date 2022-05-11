@@ -38,20 +38,20 @@ function toggle_like(post_id, type) {
 
 function post() {
     let comment = $("#textarea-post").val()
-    let url = $("#url-post").val()
+    // let url = $("#url-post").val()
     let today = new Date().toISOString()
 
     // let url = $('#url').val()
-    let star = $('#star').val()
+    // let star = $('#star').val()
 
     $.ajax({
         type: "POST",
         url: "/posting",
         data: {
             comment_give: comment,
-            date_give: today,
-            url_give: url,
-            star_give: star
+            date_give: today
+            // url_give: url,
+            // star_give: star
         },
         success: function (response) {
             $("#modal-post").removeClass("is-active")
@@ -149,8 +149,8 @@ function get_posts(username) {
                     let class_heart = post['heart_by_me'] ? "fa-heart" : "fa-heart-o"
                     let count_heart = post['count_heart']
 
-                    let star = posts[i]['star']
-                    let star_image = '⭐'.repeat(star)
+                    // let star = posts[i]['star']
+                    // let star_image = '⭐'.repeat(star)
 
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
@@ -167,7 +167,7 @@ function get_posts(username) {
                                                         <br>
                                                         ${post['comment']}
                                                         <br>
-                                                        1                                                                                                      
+                                                                                                                                                              
                                                         
                                                     </p>
                                                 </div>
