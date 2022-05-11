@@ -113,7 +113,7 @@ function get_posts(username) {
                                             <div class="media-content">
                                                 <div class="content">
                                                     <p>
-                                                        <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
+                                                        <strong>${post['nickname']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
                                                         <br>
                                                         ${post['comment']}
                                                     </p>
