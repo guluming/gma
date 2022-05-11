@@ -1,3 +1,8 @@
+function is_nickname(asValue) {
+    var regExp = /^[가-힣]{2,6}$/
+    return regExp.test(asValue);
+}
+
 function toggle_like(post_id, type) {
     console.log(post_id, type)
     let $a_like = $(`#${post_id} a[aria-label='heart']`)
@@ -84,9 +89,45 @@ function num2str(count) {
     return count
 }
 
+function check_nick() {
+    let nickname = $("#input-nickname").val()
+    console.log(nickname)
+    if (nickname == "") {
+        $("#help-nick").text("프로필을 입력해 주세요.").removeClass("is-safe").addClass("is-danger")
+        $("#input-nickname").focus()
+        return;
+    }
+    if (!is_nickname(nickname)) {
+        $("#help-nick").text("프로필의 형식을 확인해 주세요. 한글만 가능. 2-6자 길이").removeClass("is-safe").addClass("is-danger")
+        $("#input-nickname").focus()
+        return;
+    }
+    $("#help-nick").addClass("is-loading")
+    $.ajax({
+        type: "POST",
+        url: "/sign_up/check_nick",
+        data: {
+            nickname_give: nickname
+        },
+        success: function (response) {
+
+            if (response["exists"]) {
+                $("#help-nick").text("이미 존재 하는 프로필 입니다.").removeClass("is-safe").addClass("is-danger")
+                $("#input-nickname").focus()
+            } else {
+                $("#help-nick").text("사용할 수 있는 프로필 입니다.").removeClass("is-danger").addClass("is-success")
+            }
+            $("#help-nick").removeClass("is-loading")
+
+        }
+    });
+}
+
+
+
 function get_posts(username) {
-    if (username==undefined) {
-        username=""
+    if (username == undefined) {
+        username = ""
     }
     $("#post-box").empty()
     $.ajax({
