@@ -31,6 +31,11 @@ body {
     max-width: 80%;
 }
 
+.control {
+    margin-bottom: 20px;
+    /*height: 20px;*/
+}
+
 input::-webkit-calendar-picker-indicator {
     display: none;
 }
