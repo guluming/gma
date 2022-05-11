@@ -135,6 +135,8 @@ def posting():
         user_info = db.users.find_one({"username": payload["id"]})
         comment_receive = request.form["comment_give"]
         date_receive = request.form["date_give"]
+        # url_receive = request.form["url_give"]
+        # star_receive = request.form["star_give"]
         doc = {
             "username": user_info["username"],
             "profile_name": user_info["profile_name"],

@@ -39,12 +39,18 @@ function toggle_like(post_id, type) {
 function post() {
     let comment = $("#textarea-post").val()
     let today = new Date().toISOString()
+
+    // let url = $('#url').val()
+    // let star = $('#star').val()
+
     $.ajax({
         type: "POST",
         url: "/posting",
         data: {
             comment_give: comment,
             date_give: today
+            // url_give: url,
+            // star_give: star
         },
         success: function (response) {
             $("#modal-post").removeClass("is-active")
@@ -52,6 +58,45 @@ function post() {
         }
     })
 }
+
+// $(document).ready(function(){
+//           listing();
+//         });
+//
+//         function listing() {
+//             $('#cards-box').empty()
+//             $.ajax({
+//                 type: 'GET',
+//                 url: '/lecture',
+//                 data: {},
+//                 success: function (response) {
+//                     let rows = response['lectures']
+//                     for(let i = 0; i < rows.length; i++) {
+//                         let image = rows[i]['image']
+//                         let title = rows[i]['title']
+//                         let star = rows[i]['star']
+//                         let comment = rows[i]['comment']
+//
+//                         let star_image = '⭐'.repeat(star)
+//
+//                         let temp_html = `<div class="col">
+//                                             <div class="card h-100">
+//
+//                                                 <img src="${image}"
+//                                                      class="card-img-top">
+//                                                 <div class="card-body">
+//                                                     <h5 class="card-title">${title}</h5>
+//                                                     <p>${star_image}</p>
+//                                                     <p class="mycomment">${comment}</p>
+//                                                 </div>
+//                                             </div>
+//                                         </div>`
+//
+//                         $('#cards-box').append(temp_html)
+//                     }
+//                 }
+//             })
+//         }
 
 function time2str(date) {
     let today = new Date()
