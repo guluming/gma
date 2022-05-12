@@ -1,74 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강모아 | 강의 모아 보기</title>
+    <!-- bulma css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .mainBox{position:relative; width:100%; height:300px; text-align:center;}
+        .mainBox::after{content:""; position:absolute; top:0; left:0; z-index:-1; opacity:.8; width:100%; height:300px; background: url('https://static.spartacodingclub.kr/media/main_carousel/xzp9hk1o96nbakca.png') center right / cover;}
+        .mainBox h3{padding-top:100px; font-size:40px; font-weight:700; color:#000;}
+        .mainBox p{font-weight:700; color:#000;}
+        .blind{display:none;}
+        .columns{padding:20px 10px;}
+        .columns .column{text-align:center;}
+        .columns .column img{width:100%; max-width:300px;}
+    </style>
+    <script>
+        $(document).ready(function () {
+            mainpage();
+        });
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                crossorigin="anonymous"></script>
+        function mainpage() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/posts',
+                data: {},
+                success: function (response) {
+                    let rows = response['posts']
+                    for(let i =0; i<rows.length; i++){
+                        let title = rows[i]['title']
+                        let image = rows[i]['image']
+                        let text = rows[i]['text']
+                        let star = rows[i]['star']
 
-        <title>세상 모든 개발 -강모아-</title>
-        <style>
-            .container-box{
-                border: 2px solid gray;
-                height: 250px;
-            }
-            .container{
-                width: 400px;
+                        console.log(title, text)
 
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                        let star_image = '⭐'.repeat(star)
 
-                padding: 60px;
-            }
-            .login-box {
-                width: 500px;
-                height: 300px;
+                        let temp_html = `<div class="column">
+                                            <img src="${image}" alt=""><br /><br />
+                                            <h3 class="title is-5">${star_image}</h3>
+                                            <h1 class="title">${title}</h1>
+                                            <p class="subtitle is-6">${text}</p>
+                                        </div>`
 
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 10px 10px 10px 10px;
+                        $('.columns').append(temp_html)
+                    }
+                }
+            })
+        }
 
-                margin: 50px auto auto auto;
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = ('/login')
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <!-- bulma -->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+            </a>
 
-                border: 1px solid gray;
-            }
-        </style>
-    </head>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
 
-    <body>
-        <div class="container-box">
-            <div class="container">
-                <h1 class="display-4">강모아</h1>
-                <p class="lead">세상 모든 개발 강의를 한곳에!!</p>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item">
+                추천 강의 업로드
+              </a>
             </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <button class="button is-primary-light" onclick="sign_out()">로그아웃</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- main -->
+        <div class="mainBox">
+            <h3>강모아</h3>
+            <p>강의를 편하게<br />모아 보자!</p>
         </div>
-        <form class="login-box">
-            <div class="form-group">
-                <label for="exampleInputEmail1">ID</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="ID를 입력해주세요.">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호를 입력해주세요.">
-                <small id="emailHelp" class="form-text text-muted" onclick="location.href='test'">회원가입하기</small>
-            </div>
-            <button type="submit" class="btn btn-primary">로그인</button>
-        </form>
-    </body>
+
+        <!-- content -->
+        <div class="columns">
+        </div>
+    </div>
+</body>
 </html>
