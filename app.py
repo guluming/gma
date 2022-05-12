@@ -76,13 +76,14 @@ def sign_in():
 def sign_up():
     # 회원가입
     username_receive = request.form['username_give']
+    nickname_receive = request.form['nickname_give']
     password_receive = request.form['password_give']
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     # DB에 저장
     doc = {
         "username": username_receive,                               # 아이디
         "password": password_hash,                                  # 비밀번호
-        "profile_name": username_receive,                           # 프로필 이름 기본값은 아이디
+        "nickname": nickname_receive,                               # 프로필 이름
         "profile_pic": "",                                          # 프로필 사진 파일 이름
         "profile_pic_real": "profile_pics/profile_placeholder.png", # 프로필 사진 기본 이미지
         "profile_info": ""                                          # 프로필 한 마디
@@ -99,6 +100,14 @@ def check_dup():
     return jsonify({'result': 'success', 'exists': exists})
 
 
+@app.route('/sign_up/check_nick', methods=['POST'])
+def check_nick():
+    # 프로필 중복확인
+    nickname_receive = request.form['nickname_give']
+    exists = bool(db.users.find_one({"nickname": nickname_receive}))
+    return jsonify({'result': 'success', 'exists': exists})
+
+
 @app.route('/update_profile', methods=['POST'])
 def save_img():
     # 프로필 수정
@@ -106,10 +115,10 @@ def save_img():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         username = payload["id"]
-        name_receive = request.form["name_give"]
+        nick_receive = request.form["nick_give"]
         about_receive = request.form["about_give"]
         new_doc = {
-            "profile_name": name_receive,
+            "nickname": nick_receive,
             "profile_info": about_receive
         }
         if 'file_give' in request.files:
@@ -133,13 +142,17 @@ def posting():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"username": payload["id"]})
+        url_receive = request.form["url_give"]
         comment_receive = request.form["comment_give"]
+        star_receive = request.form["star_give"]
         date_receive = request.form["date_give"]
         doc = {
             "username": user_info["username"],
-            "profile_name": user_info["profile_name"],
+            "nickname": user_info["nickname"],
             "profile_pic_real": user_info["profile_pic_real"],
+            "url": url_receive,
             "comment": comment_receive,
+            "star": star_receive,
             "date": date_receive
         }
         db.posts.insert_one(doc)
