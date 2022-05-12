@@ -234,21 +234,13 @@ function get_posts(username) {
 
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
-                                            <div class="media-left">
-                                                <a class="image is-64x64" href="/user/${post['username']}">
-                                                    <img class="is-rounded" src="/static/${post['profile_pic_real']}"
-                                                         alt="Image">
-                                                </a>
-                                            </div>
                                             <div class="media-content">
                                                 <div class="content">
-                                                    <p>
-                                                        <strong>${post['nickname']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>                                                        
-                                                        <img src="${image}" 
-                                                            class="card-img-top" id="image">
-                                                        <p class="mytitle">${title}</p>                                                                                                          
+                                                <img src="${image}" class="card-img-top" id="image">
+                                                    <p><strong>${post['nickname']}</strong> <small>ID:${post['username']}</small> <small>${time_before}</small>
+                                                        <p class="mytitle">${title}</p>
                                                         <p>${star_image}</p>
-                                                        <p class="mycomment">${post['comment']}</p>                                                                                                                                                                                                                                                                       
+                                                        <p class="mycomment">${post['comment']}</p>
                                                     </p>
                                                 </div>
                                                 <nav class="level is-mobile">
