@@ -11,8 +11,8 @@
 - [강모아 홈페이지](http://guluming-world.shop/)
 
 ## ✅ 필수 요구 사항
-- jinja2 템플릿 엔진을 이용한 서버사이드 렌더링
-- JWT 인증 방식으로 로그인 구현하기
+* <img src="https://img.shields.io/badge/Jinja2-7952B3?style=for-the-badge&logo=Jinja&logoColor=white">
+* <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens">
 
 
 ## 📷 시연 영상 📷
@@ -23,6 +23,10 @@
 - 회원가입을 하고 강의를 공유할 수 있습니다
 - 마이 페이지에서 자신이 공유한 강의를 따로 볼 수 있습니다.
 - 별점이 높은 순서로 공유된 강의를 확인 할 수 있습니다.
+
+
+## 초기 구성 와이어프레임
+- ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
 ## 초기 구성 와이어프레임
@@ -49,28 +53,34 @@
 <img src="https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white">
 <img src="https://img.shields.io/badge/Bulma-8c00ff?style=for-the-badge&logoColor=white">
 <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens">
-<img src="https://img.shields.io/badge/Jinja-7952B3?style=for-the-badge&logo=Jinja&logoColor=white">
+<img src="https://img.shields.io/badge/Jinja2-7952B3?style=for-the-badge&logo=Jinja&logoColor=white">
 <img src="https://img.shields.io/badge/Flask-00ffff?style=for-the-badge&logo=Flask&logoColor=black">
 </p>
 
 <h4>-에디터</h4>
+<p float="left">
 <img src="https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=brightgreen">
+</p>
 
 <h4>-협업툴</h4>
 <p float="left">
 <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/Gather-2322F0?style=for-the-badge&logoColor=white">
-  <img src="https://img.shields.io/badge/Discord-5765F2?style=for-the-badge&logo=Discord&logoColor=white">
+<img src="https://img.shields.io/badge/Discord-5765F2?style=for-the-badge&logo=Discord&logoColor=white">
 </p>
 
 <h4>-데이터베이스</h4>
+<p float="left">
 <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white">
+</p>
 
-<h4>-호스팅<h4>
+<h4>-호스팅</h4>
+<p float="left">
 <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white">
+</p>
 
-  
+
 ## 프로젝트 팀원
 - Thanks to @문범수
 - Thanks to @이호진
