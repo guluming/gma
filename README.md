@@ -15,21 +15,21 @@
 * <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens">
 
 
-## 📷 시연 영상 📷
+## 📷 시연 영상
 [![시연 영상](썸네일 링크)](유튜브 링크)
 
 
-## 핵심 기능  Key Feature
+## 🛠 핵심 기능  Key Feature
 - 회원가입을 하고 강의를 공유할 수 있습니다
 - 마이 페이지에서 자신이 공유한 강의를 따로 볼 수 있습니다.
 - 별점이 높은 순서로 공유된 강의를 확인 할 수 있습니다.
 
 
-## 초기 구성 와이어프레임
+## 🗒🛠 초기 구성 와이어프레임
 ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
-## 실제 구성 와이어프레임
+## 📝🛠 실제 구성 와이어프레임
 ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
@@ -81,7 +81,7 @@
 </p>
 
 
-## 프로젝트 팀원
+## 👨‍💼 프로젝트 팀원
 - Thanks to @문범수
 - Thanks to @이호진
 - Thanks to @조성익
