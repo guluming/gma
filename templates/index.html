@@ -5,10 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강모아 | 강의 모아 보기</title>
+
     <!-- bulma css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <!-- 구글 폰트 링크  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+
     <style>
         .mainBox{
             width: 100%;
@@ -24,20 +36,39 @@
             justify-content: center;
         }
 
+        .mainBox > p1{
+            color: #20a44e;
+            font-family: 'Black Han Sans', sans-serif;
+        }
+
+        .mainBox > p2{
+            color: aquamarine;
+            font-family: 'Jua', sans-serif;
+        }
+
+        .buttonBox{
+            text-align:center;
+        }
+
+        .buttonBox button{
+            margin:0 10px;
+            font-family: 'Jua', sans-serif;
+        }
         {#.mainBox{position:relative; width:100%; height:300px; text-align:center;}#}
         {#.mainBox::after{content:""; position:absolute; top:0; left:0; z-index:-1; opacity:.8; width:100%; height:300px; background: url('https://static.spartacodingclub.kr/media/main_carousel/xzp9hk1o96nbakca.png') center right / cover;}#}
         {#.mainBox h3{padding-top:100px; font-size:40px; font-weight:700; color:#000;}#}
-        .mainBox p{
-            font-size: 300pt;
-            font-weight:700;
-            color:#000;
-        }
+        {#.mainBox p{#}
+        {#    font-size: 3em;#}
+        {#    font-weight:700;#}
+        {#    color:#000;#}
+        {#}#}
         .blind{display:none;}
         .columns{padding:20px 10px;}
         .columns > column{text-align:center;}
         .columns > column img{width:100%; max-width:300px;}
-        .buttonBox{margin-top:20px; text-align:center;}
-        .buttonBox button{margin:0 10px;}
+
+
+
     </style>
     <script>
         $(document).ready(function () {
@@ -80,6 +111,7 @@
             alert('로그아웃!')
             window.location.href = ('/login')
         }
+
     </script>
 </head>
 <body>
@@ -111,11 +143,11 @@
         <!-- main -->
 
         <div class="mainBox">
-            <p class="title is-1">G M A</p>
-            <p class="subtitle is-3">강의를 편하게 모아 보자!</p>
+            <p1 class="title is-1" style="font-size: 120px">G M A</p1>
+            <p2 class="subtitle is-3" style="font-size: 37px">강의를 편하게 모아 보자!</p2>
             <div class="buttonBox">
-                <button class="button is-primary is-rounded is-large">강의 공유</button>
-                <button class="button is-link is-rounded is-large">My Page</button>
+                <button class="button is-primary is-rounded is-large" style="width: 200px">강의 공유</button>
+                <a href="/user/{{ user_info.username }}"><button class="button is-link is-rounded is-large" style="width: 200px">My Page</button></a>
             </div>
         </div>
 
