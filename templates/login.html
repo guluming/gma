@@ -16,10 +16,13 @@
 
         <!-- Bulma CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
         <!-- Font Awesome CSS -->
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
         <!-- mystyle CSS 링크 -->
         <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+
         <!-- 구글 폰트 링크  -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,9 +56,6 @@
 
         </style>
         <script>
-            // {% if msg %}
-            //     alert("{{ msg }}")
-            // {% endif %}
             function sign_in() {
                 let username = $("#input-username").val()
                 let password = $("#input-password").val()
@@ -92,7 +92,6 @@
                     }
                 });
             }
-
             function sign_up() {
                 let username = $("#input-username").val()
                 let nickname = $("#input-nickname").val()
@@ -210,9 +209,7 @@
                     }
                 });
             }
-
         </script>
-
     </head>
     <body>
         <section class="hero is-white">
