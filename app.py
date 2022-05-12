@@ -5,6 +5,8 @@ import hashlib
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+import requests
+from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
@@ -23,11 +25,8 @@ def home():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"username": payload["id"]})
-
         # return render_template('classmain.html', user_info=user_info)
-
         return render_template('index.html', user_info=user_info)
-
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -139,6 +138,32 @@ def save_img():
         return redirect(url_for("home"))
 
 
+# @app.route('/posting', methods=['POST'])
+# def posting():
+#     # 포스팅하기
+#     token_receive = request.cookies.get('mytoken')
+#     try:
+#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+#         user_info = db.users.find_one({"username": payload["id"]})
+#         url_receive = request.form["url_give"]
+#         comment_receive = request.form["comment_give"]
+#         star_receive = request.form["star_give"]
+#         date_receive = request.form["date_give"]
+#         doc = {
+#             "username": user_info["username"],
+#             "nickname": user_info["nickname"],
+#             "profile_pic_real": user_info["profile_pic_real"],
+#             "url": url_receive,
+#             "comment": comment_receive,
+#             "star": star_receive,
+#             "date": date_receive
+#         }
+#         db.posts.insert_one(doc)
+#         return jsonify({"result": "success", 'msg': '포스팅 성공'})
+#     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+#         return redirect(url_for("home"))
+
+
 @app.route('/posting', methods=['POST'])
 def posting():
     # 포스팅하기
@@ -146,20 +171,37 @@ def posting():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"username": payload["id"]})
-        url_receive = request.form["url_give"]
         comment_receive = request.form["comment_give"]
-        star_receive = request.form["star_give"]
         date_receive = request.form["date_give"]
+        url_receive = request.form['url_give']
+        star_receive = request.form['star_give']
+
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+        data = requests.get(url_receive, headers=headers)
+
+        soup = BeautifulSoup(data.text, 'html.parser')
+
+        og_image = soup.select_one('meta[property="og:image"]')
+        og_title = soup.select_one('meta[property="og:title"]')
+
+        image = og_image['content']
+        title = og_title['content']
+
         doc = {
             "username": user_info["username"],
             "nickname": user_info["nickname"],
             "profile_pic_real": user_info["profile_pic_real"],
-            "url": url_receive,
             "comment": comment_receive,
-            "star": star_receive,
-            "date": date_receive
+            "date": date_receive,
+            "title": title,
+            'star': star_receive,
+            'image': image
+
         }
         db.posts.insert_one(doc)
+
         return jsonify({"result": "success", 'msg': '포스팅 성공'})
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
