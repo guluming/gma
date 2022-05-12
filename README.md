@@ -26,11 +26,11 @@
 
 
 ## 초기 구성 와이어프레임
-- ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
+![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
-## 초기 구성 와이어프레임
-- ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
+## 실제 구성 와이어프레임
+![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
 ## 사용 How To Use
