@@ -128,13 +128,11 @@ function get_posts(username) {
                                                 <div class="content">
                                                     <p>
                                                         <strong>${post['profile_name']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>                                                        
-                                                        <a href="#url"><img src="${image}" 
-                                                            class="card-img-top" id="image"></a>
-<!--                                                            url에 아이디 값을 줘야되는데                                                        -->
+                                                        <img src="${image}" 
+                                                            class="card-img-top" id="image">
                                                         <p class="mytitle">${title}</p>                                                                                                          
                                                         <p>${star_image}</p>
-                                                        <p class="mycomment">${post['comment']}</p>                                                                                                                                                                                                                                                                         
-                                                      
+                                                        <p class="mycomment">${post['comment']}</p>                                                                                                                                                                                                                                                                       
                                                     </p>
                                                 </div>
                                                 <nav class="level is-mobile">
@@ -142,7 +140,8 @@ function get_posts(username) {
                                                         <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('${post['_id']}', 'heart')">
                                                             <span class="icon is-small">
                                                             <i class="fa ${class_heart}"aria-hidden="true"></i>
-                                                            </span>&nbsp;<span class="like-num">${num2str(count_heart)}</span>
+                                                            </span>
+                                                            <span class="like-num">${num2str(count_heart)}</span>
                                                         </a>
                                                     </div>
                                                 </nav>

@@ -33,7 +33,6 @@ body {
 
 .control {
     margin-bottom: 20px;
-    /*height: 20px;*/
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -56,10 +55,4 @@ input::-webkit-calendar-picker-indicator {
 
 .mytitle {
     font-weight: bold;
-}
-
-.image {
-    /*width: 95%;*/
-    /*min-width: 200px*/
-
 }
