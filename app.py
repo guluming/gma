@@ -1,8 +1,10 @@
 from pymongo import MongoClient
-<<<<<<< HEAD
+
 client = MongoClient('mongodb+srv://test:sparta@cluster0.vnobi.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
-=======
+# client = MongoClient('mongodb+srv://test:sparta@cluster0.abw6w.mongodb.net/Cluster0?retryWrites=true&w=majority')
+# db = client.dbsparta_plus_week4
+
 import jwt
 import datetime
 import hashlib
@@ -10,17 +12,11 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 
-
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 
 SECRET_KEY = 'SPARTA'
-
-client = MongoClient('mongodb+srv://test:sparta@cluster0.abw6w.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.dbsparta_plus_week4
-
->>>>>>> origin/feature/Login
 
 @app.route('/')
 def home():
@@ -34,14 +30,14 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-<<<<<<< HEAD
-# 메인 페이지 - 이병수
+
 @app.route("/api/posts", methods=["GET"])
 def posts_get():
+    # 메인페이지 게시물
     posts_list = list(db.posts.find({}, {'_id': False}))
 
     return jsonify({'posts':posts_list})
-=======
+
 
 @app.route('/login')
 def login():
@@ -206,7 +202,6 @@ def update_like():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
->>>>>>> origin/feature/Login
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
