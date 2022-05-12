@@ -2,7 +2,6 @@
 
 # GMA 프로젝트  
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ohahohah/readme-template/graphs/commit-activity) 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
@@ -27,12 +26,6 @@
 - 사용하고 싶도록 유용한 몇 가지 예를 적습니다. 코드 블록과 스크린샷 포함.
 - (wiki가 있을 경우) _더 많은 예시와 사용 예제는 [Wiki](wiki)를 참고하세요._
 ![](header.png)
-
-## Contributing
-- Thanks to @문범수
-- Thanks to @이호진
-- Thanks to @조성익
-- Thanks to @이병수
 
 ### 🔨 개발툴
 <h4>- 언어</h4>
@@ -70,6 +63,12 @@
 <h4>-호스팅<h4>
 <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white">
 
+## 프로젝트 팀원
+- Thanks to @문범수
+- Thanks to @이호진
+- Thanks to @조성익
+- Thanks to @이병수
+  
 ## 프로젝트 관련 Links
 - Project homepage: https://your.github.com/awesome-project/
 - Repository: https://github.com/yourname/github-link
