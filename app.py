@@ -1,9 +1,9 @@
 from pymongo import MongoClient
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.vnobi.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.dbsparta
-# client = MongoClient('mongodb+srv://test:sparta@cluster0.abw6w.mongodb.net/Cluster0?retryWrites=true&w=majority')
-# db = client.dbsparta_plus_week4
+# client = MongoClient('mongodb+srv://test:sparta@cluster0.vnobi.mongodb.net/Cluster0?retryWrites=true&w=majority')
+# db = client.dbsparta
+client = MongoClient('mongodb+srv://test:sparta@cluster0.abw6w.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta_plus_week4
 
 import jwt
 import datetime
