@@ -34,11 +34,6 @@
         <script src="{{ url_for('static', filename='myjs.js') }}"></script>
 
         <style>
-            {#body {#}
-            {#    background-color: RGBA(232, 52, 78, 0.2);#}
-            {#    min-height: 100vh;#}
-            {#}#}
-
             .title {
                 font-weight: 800;
                 font-size: 5rem;
@@ -260,20 +255,17 @@
                                 </div>
                             </div>
                             <div id="div-sign-in-or-up" class="has-text-centered">
+                                <label class="label" align="right" style="padding-right: 20px">⬇아직 회원이 아니라면!?⬇</label>
                                 <nav class="level is-mobile">
                                     <button class="level-item button is-sparta" onclick="sign_in()">
                                         로그인
                                     </button>
-
+                                        <button class="level-item button is-sparta is-outlined" onclick="toggle_sign_up()">
+                                        회원가입
+                                    </button>
                                 </nav>
-                                <hr>
-                                <h4 class="mb-3">아직 회원이 아니라면</h4>
                                 <nav class="level is-mobile">
 
-                                    <button class="level-item button is-sparta is-outlined"
-                                            onclick="toggle_sign_up()">
-                                        회원가입하기
-                                    </button>
                                 </nav>
                             </div>
                             <div id="sign-up-box" class="is-hidden">
