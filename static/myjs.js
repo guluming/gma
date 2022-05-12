@@ -41,19 +41,43 @@ function toggle_like(post_id, type) {
     }
 }
 
+// function post() {
+//     let url = $('#url').val()
+//     let comment = $("#textarea-post").val()
+//     let star = $('#star').val()
+//     let today = new Date().toISOString()
+//     $.ajax({
+//         type: "POST",
+//         url: "/posting",
+//         data: {
+//             url_give:url,
+//             comment_give: comment,
+//             star_give:star,
+//             date_give: today
+//         },
+//         success: function (response) {
+//             $("#modal-post").removeClass("is-active")
+//             window.location.reload()
+//         }
+//     })
+// }
+
 function post() {
-    let url = $('#url').val()
+    let url = $("#url").val()
+    let title = $("#title").val()
     let comment = $("#textarea-post").val()
-    let star = $('#star').val()
     let today = new Date().toISOString()
+    let star = $('#star').val()
+
     $.ajax({
         type: "POST",
         url: "/posting",
         data: {
-            url_give:url,
             comment_give: comment,
-            star_give:star,
-            date_give: today
+            url_give: url,
+            title_give: title,
+            date_give: today,
+            star_give: star
         },
         success: function (response) {
             $("#modal-post").removeClass("is-active")
@@ -129,6 +153,60 @@ function check_nick() {
 
 
 
+// function get_posts(username) {
+//     if (username == undefined) {
+//         username = ""
+//     }
+//     $("#post-box").empty()
+//     $.ajax({
+//         type: "GET",
+//         url: `/get_posts?username_give=${username}`,
+//         data: {},
+//         success: function (response) {
+//             if (response["result"] == "success") {
+//                 let posts = response["posts"]
+//                 for (let i = 0; i < posts.length; i++) {
+//                     let post = posts[i]
+//                     let time_post = new Date(post["date"])
+//                     let time_before = time2str(time_post)
+//                     let class_heart = post['heart_by_me'] ? "fa-heart" : "fa-heart-o"
+//                     let count_heart = post['count_heart']
+//                     let html_temp = `<div class="box" id="${post["_id"]}">
+//                                         <article class="media">
+//                                             <div class="media-left">
+//                                                 <a class="image is-64x64" href="/user/${post['username']}">
+//                                                     <img class="is-rounded" src="/static/${post['profile_pic_real']}"
+//                                                          alt="Image">
+//                                                 </a>
+//                                             </div>
+//                                             <div class="media-content">
+//                                                 <div class="content">
+//                                                     <p>
+//                                                         <strong>${post['nickname']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
+//                                                         <br>
+//                                                         ${post['comment']}
+//                                                     </p>
+//                                                 </div>
+//                                                 <nav class="level is-mobile">
+//                                                     <div class="level-left">
+//                                                         <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('${post['_id']}', 'heart')">
+//                                                             <span class="icon is-small">
+//                                                             <i class="fa ${class_heart}"aria-hidden="true"></i>
+//                                                             </span>&nbsp;<span class="like-num">${num2str(count_heart)}</span>
+//                                                         </a>
+//                                                     </div>
+//
+//                                                 </nav>
+//                                             </div>
+//                                         </article>
+//                                     </div>`
+//                     $("#post-box").append(html_temp)
+//                 }
+//             }
+//         }
+//     })
+// }
+
 function get_posts(username) {
     if (username == undefined) {
         username = ""
@@ -147,20 +225,22 @@ function get_posts(username) {
                     let time_before = time2str(time_post)
                     let class_heart = post['heart_by_me'] ? "fa-heart" : "fa-heart-o"
                     let count_heart = post['count_heart']
+
+                    let star = posts[i]['star']
+                    let star_image = '⭐'.repeat(star)
+
+                    let image = posts[i]['image']
+                    let title = posts[i]['title']
+
                     let html_temp = `<div class="box" id="${post["_id"]}">
                                         <article class="media">
-                                            <div class="media-left">
-                                                <a class="image is-64x64" href="/user/${post['username']}">
-                                                    <img class="is-rounded" src="/static/${post['profile_pic_real']}"
-                                                         alt="Image">
-                                                </a>
-                                            </div>
                                             <div class="media-content">
                                                 <div class="content">
-                                                    <p>
-                                                        <strong>${post['nickname']}</strong> <small>@${post['username']}</small> <small>${time_before}</small>
-                                                        <br>
-                                                        ${post['comment']}
+                                                <img src="${image}" class="card-img-top" id="image">
+                                                    <p><strong>${post['nickname']}</strong> <small>ID:${post['username']}</small> <small>${time_before}</small>
+                                                        <p class="mytitle">${title}</p>
+                                                        <p>${star_image}</p>
+                                                        <p class="mycomment">${post['comment']}</p>
                                                     </p>
                                                 </div>
                                                 <nav class="level is-mobile">
@@ -168,10 +248,10 @@ function get_posts(username) {
                                                         <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('${post['_id']}', 'heart')">
                                                             <span class="icon is-small">
                                                             <i class="fa ${class_heart}"aria-hidden="true"></i>
-                                                            </span>&nbsp;<span class="like-num">${num2str(count_heart)}</span>
+                                                            </span>
+                                                            <span class="like-num">${num2str(count_heart)}</span>
                                                         </a>
                                                     </div>
-
                                                 </nav>
                                             </div>
                                         </article>

@@ -16,10 +16,21 @@
 
         <!-- Bulma CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+        <!-- 부트스트랩 css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+
         <!-- Font Awesome CSS -->
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
         <!-- mystyle CSS 링크 -->
         <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
+
         <!-- 구글 폰트 링크  -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,11 +42,6 @@
         <script src="{{ url_for('static', filename='myjs.js') }}"></script>
 
         <style>
-            {#body {#}
-            {#    background-color: RGBA(232, 52, 78, 0.2);#}
-            {#    min-height: 100vh;#}
-            {#}#}
-
             .title {
                 font-weight: 800;
                 font-size: 5rem;
@@ -53,9 +59,6 @@
 
         </style>
         <script>
-            // {% if msg %}
-            //     alert("{{ msg }}")
-            // {% endif %}
             function sign_in() {
                 let username = $("#input-username").val()
                 let password = $("#input-password").val()
@@ -92,7 +95,6 @@
                     }
                 });
             }
-
             function sign_up() {
                 let username = $("#input-username").val()
                 let nickname = $("#input-nickname").val()
@@ -210,9 +212,7 @@
                     }
                 });
             }
-
         </script>
-
     </head>
     <body>
         <section class="hero is-white">
@@ -263,20 +263,17 @@
                                 </div>
                             </div>
                             <div id="div-sign-in-or-up" class="has-text-centered">
+                                <label class="label" align="right" style="padding-right: 20px">⬇아직 회원이 아니라면!?⬇</label>
                                 <nav class="level is-mobile">
                                     <button class="level-item button is-sparta" onclick="sign_in()">
                                         로그인
                                     </button>
-
+                                        <button class="level-item button is-sparta is-outlined" onclick="toggle_sign_up()">
+                                        회원가입
+                                    </button>
                                 </nav>
-                                <hr>
-                                <h4 class="mb-3">아직 회원이 아니라면</h4>
                                 <nav class="level is-mobile">
 
-                                    <button class="level-item button is-sparta is-outlined"
-                                            onclick="toggle_sign_up()">
-                                        회원가입하기
-                                    </button>
                                 </nav>
                             </div>
                             <div id="sign-up-box" class="is-hidden">
