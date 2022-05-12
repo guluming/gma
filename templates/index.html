@@ -7,8 +7,8 @@
     <title>강모아 | 강의 모아 보기</title>
     <!-- bulma css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <style>
         .mainBox{position:relative; width:100%; height:300px; text-align:center;}
         .mainBox::after{content:""; position:absolute; top:0; left:0; z-index:-1; opacity:.8; width:100%; height:300px; background: url('https://static.spartacodingclub.kr/media/main_carousel/xzp9hk1o96nbakca.png') center right / cover;}
@@ -18,6 +18,8 @@
         .columns{padding:20px 10px;}
         .columns .column{text-align:center;}
         .columns .column img{width:100%; max-width:300px;}
+        .buttonBox{margin-top:20px; text-align:center;}
+        .buttonBox button{margin:0 10px;}
     </style>
     <script>
         $(document).ready(function () {
@@ -78,12 +80,6 @@
           </div>
 
           <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item">
-                추천 강의 업로드
-              </a>
-            </div>
-
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
@@ -98,6 +94,11 @@
         <div class="mainBox">
             <h3>강모아</h3>
             <p>강의를 편하게<br />모아 보자!</p>
+        </div>
+
+        <div class="buttonBox">
+            <button class="button">추천 강의 업로드</button>
+            <button class="button">마이 페이지</button>
         </div>
 
         <!-- content -->
