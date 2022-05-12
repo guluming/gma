@@ -15,28 +15,32 @@
 * <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens">
 
 
-## 📷 시연 영상 📷
+## 📷 시연 영상
 [![시연 영상](썸네일 링크)](유튜브 링크)
 
 
-## 핵심 기능  Key Feature
+## 🛠 핵심 기능  Key Feature
 - 회원가입을 하고 강의를 공유할 수 있습니다
 - 마이 페이지에서 자신이 공유한 강의를 따로 볼 수 있습니다.
 - 별점이 높은 순서로 공유된 강의를 확인 할 수 있습니다.
 
 
-## 초기 구성 와이어프레임
+## 🗒🛠 초기 구성 와이어프레임
 ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
-## 실제 구성 와이어프레임
+## 📝🛠 실제 구성 와이어프레임
 ![GMA_wireframe](https://user-images.githubusercontent.com/105046055/167973657-519581dc-e8af-48f2-9b66-d16eea6364e1.jpg)
 
 
-## 사용 How To Use
-- 사용하고 싶도록 유용한 몇 가지 예를 적습니다. 코드 블록과 스크린샷 포함.
-- (wiki가 있을 경우) _더 많은 예시와 사용 예제는 [Wiki](wiki)를 참고하세요._
-![](header.png)
+## ▶ 웹사이트 사용법
+- 로그인 이후 이용가능!
+  ㄴ계정이 없다면 간단한 회원가입 후 이용
+- 메인 페이지에서 현재 공유된 강의들을 확인가능
+- 공유된 강의들에 '좋아요'로 표시 가능
+- 화면 중앙에 '강의 공유'버튼으로 업로드
+- 화면 중앙에 'MY Page'버튼으로 마이 페이지 이동
+- 마이 페이지 에서는 자신이 공유한 강의 확인 가능
 
 
 ### 🔨 개발툴
@@ -81,19 +85,13 @@
 </p>
 
 
-## 프로젝트 팀원
+## 👨‍💼 프로젝트 팀원
 - Thanks to @문범수
 - Thanks to @이호진
 - Thanks to @조성익
 - Thanks to @이병수
   
   
-## 프로젝트 관련 Links
+## 🔗 프로젝트 관련 Links
 - Project homepage: http://guluming-world.shop/
 - Repository: https://github.com/guluming/gma.git
-
-  
-## License
-*(공동작업자가 있을 경우 모두 적어줍니다)*  
-이름1 – [이메일 주소1](mailto:이메일주소@example.com)  
-이름2 - [이메일 주소2](mailto:이메일주소@example.com)  
