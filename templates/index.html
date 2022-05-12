@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강모아 | 강의 모아 보기</title>
+    <!-- bulma css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <style>
+        .mainBox{position:relative; width:100%; height:300px; text-align:center;}
+        .mainBox::after{content:""; position:absolute; top:0; left:0; z-index:-1; opacity:.8; width:100%; height:300px; background: url('https://static.spartacodingclub.kr/media/main_carousel/xzp9hk1o96nbakca.png') center right / cover;}
+        .mainBox h3{padding-top:100px; font-size:40px; font-weight:700; color:#000;}
+        .mainBox p{font-weight:700; color:#000;}
+        .blind{display:none;}
+        .columns{padding:20px 10px;}
+        .columns .column{text-align:center;}
+        .columns .column img{width:100%; max-width:300px;}
+        .buttonBox{margin-top:20px; text-align:center;}
+        .buttonBox button{margin:0 10px;}
+    </style>
+    <script>
+        $(document).ready(function () {
+            mainpage();
+        });
+
+        $(document).ready(function () {
+            get_posts()
+        })
+
+        function mainpage() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/posts',
+                data: {},
+                success: function (response) {
+                    let rows = response['posts']
+                    for(let i =0; i<rows.length; i++){
+                        let title = rows[i]['title']
+                        let image = rows[i]['image']
+                        let text = rows[i]['text']
+                        let star = rows[i]['star']
+
+                        console.log(title, text)
+
+                        let star_image = '⭐'.repeat(star)
+
+                        let temp_html = `<div class="column">
+                                            <img src="${image}" alt=""><br /><br />
+                                            <h3 class="title is-5">${star_image}</h3>
+                                            <h1 class="title">${title}</h1>
+                                            <p class="subtitle is-6">${text}</p>
+                                        </div>`
+
+                        $('.columns').append(temp_html)
+                    }
+                }
+            })
+        }
+
+
+
+        function sign_out() {
+            //로그아웃
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃!')
+            window.location.href = ('/login')
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <!-- bulma -->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                    <button class="button is-primary-light" onclick="sign_out()">로그아웃</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- main -->
+        <div class="mainBox">
+            <h3>강모아</h3>
+            <p>강의를 편하게<br />모아 보자!</p>
+        </div>
+
+</body>
+
+<section class="section">
+    <article class="media">
+<!--        <figure class="media-left" style="align-self: center">-->
+<!--            <a class="image is-32x32" href="/user/{{ user_info.username }}">-->
+<!--                <img class="is-rounded"-->
+<!--                     src="{{ url_for('static', filename=user_info.profile_pic_real) }}">-->
+<!--            </a>-->
+<!--        </figure>-->
+<!--        <div class="media-content">-->
+<!--            <div class="field">-->
+<!--                <p class="control">-->
+<!--                    <input id="input-post" class="input is-rounded" placeholder="무슨 생각을 하고 계신가요?"-->
+<!--                           onclick='$("#modal-post").addClass("is-active")'></p>-->
+
+<!--            </div>-->
+
+            <div class="buttonBox">
+                <button class="button" onclick='$("#modal-post").addClass("is-active")'>추천 강의 업로드</button>
+                <button class="button">마이 페이지</button>
+            </div>
+
+        </div>
+    </article>
+    <div class="modal" id="modal-post">
+        <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+        <div class="modal-content">
+            <div class="box">
+                <article class="media">
+                    <div class="media-content">
+                        <div class="field">
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input id="url" class="input" type="text" placeholder="url을 작성해주세요.">
+                                </div>
+                            </div>
+                            <p class="control">
+                                        <textarea id="textarea-post" class="textarea"
+                                                  placeholder="수강평을 작성해주세요."></textarea>
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <div class="input-group mb-3">
+                                    <select class="form-select" input id="star">
+                                        <option selected>-- 별점 --</option>
+                                        <option value="1">⭐</option>
+                                        <option value="2">⭐⭐</option>
+                                        <option value="3">⭐⭐⭐</option>
+                                        <option value="4">⭐⭐⭐⭐</option>
+                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <a class="button is-sparta" onclick="post()">포스팅하기</a>
+                                </div>
+                                <div class="level-item">
+                                    <a class="button is-sparta is-outlined"
+                                       onclick='$("#modal-post").removeClass("is-active")'>취소</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"
+                onclick='$("#modal-post").removeClass("is-active")'></button>
+    </div>
+</section>
+<section class="section">
+    <div id="post-box" class="container">
+        <div class="box">
+            <article class="media">
+                <div class="media-left">
+                    <a class="image is-64x64" href="#">
+                        <img class="is-rounded"
+                             src={{ url_for("static", filename="profile_pics/profile_placeholder.png") }} alt="Image">
+                    </a>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong>홍길동</strong> <small>@username</small> <small>10분 전</small>
+                            <br>
+                            글을 적는 칸
+                        </p>
+                    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <a class="level-item is-sparta" aria-label="heart" onclick="toggle_like('', 'heart')">
+                                <span class="icon is-small"><i class="fa fa-heart"
+                                                               aria-hidden="true"></i></span>&nbsp;<span
+                                    class="like-num">2.7k</span>
+                            </a>
+                        </div>
+
+                    </nav>
+                </div>
+            </article>
+        </div>
+
+    </div>
+</section>
+
+</html>
